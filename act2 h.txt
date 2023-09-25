@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp2.MainPage">
+
+    <ScrollView>
+        <StackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <StackLayout
+                Orientation="Horizontal"
+                Spacing="10">
+
+                
+                <ImageButton
+                    x:Name="Image1Button"
+                    Source="old_img1.png"
+                    HeightRequest="500"
+                    WidthRequest="500"
+                    Clicked="OnImageClicked" />
+
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
+
+using System;
+using Microsoft.Maui.Controls;
+using MauiApp2;
+
+namespace MauiApp2
+{
+    public partial class MainPage : ContentPage
+    {
+        private bool isImage1Visible = true;
+
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+
+        private void OnImageClicked(object sender, EventArgs e)
+        {
+            if (sender == Image1Button)
+            {
+                // Toggle the first image
+                if (isImage1Visible)
+                {
+                    Image1Button.Source = "expectation1.png";
+                }
+                else
+                {
+                    Image1Button.Source = "reality1.png";
+                }
+
+                isImage1Visible = !isImage1Visible;
+            }
+            // Add similar logic for Image2Button if needed
+        }
+    }
+}
